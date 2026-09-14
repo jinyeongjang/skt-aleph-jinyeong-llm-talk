@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Bot, CheckCircle2, Clock, Eye, EyeOff, MessageSquare, Sparkles, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { BENCHMARK_MODELS, COMMON_LIMITS, TOOL_SELECTION_CRITERIA, WORKFLOW_TIMELINE } from '../utils/benchmarkData.ts';
 
 export const BlindBenchmarkSection: React.FC = () => {
@@ -58,6 +59,15 @@ export const BlindBenchmarkSection: React.FC = () => {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Model A Card */}
         <div className="relative overflow-hidden rounded-2xl border border-neutral-200/80 bg-white/70 p-6 shadow-xs backdrop-blur-xl transition-all dark:border-neutral-800/80 dark:bg-neutral-900/60">
+          {/* Top Accent Line filling left-to-right */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute top-0 right-0 left-0 h-1 origin-left bg-gradient-to-r from-neutral-400 via-neutral-600 to-neutral-900 dark:from-neutral-700 dark:via-neutral-400 dark:to-neutral-100"
+          />
+
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900">
@@ -72,9 +82,20 @@ export const BlindBenchmarkSection: React.FC = () => {
                 </p>
               </div>
             </div>
-            <span className="rounded-full bg-neutral-100 px-2.5 py-1 text-xs font-semibold text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">
-              중단 시점: 6 / 10 PASS
-            </span>
+            <div className="flex flex-col items-end gap-1">
+              <span className="rounded-full bg-neutral-100 px-2.5 py-1 text-xs font-semibold text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">
+                중단 시점: 6 / 10 PASS
+              </span>
+              <div className="h-1.5 w-20 overflow-hidden rounded-full bg-neutral-200/70 dark:bg-neutral-800">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '60%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+                  className="h-full rounded-full bg-neutral-700 dark:bg-neutral-300"
+                />
+              </div>
+            </div>
           </div>
 
           <p className="mt-3 text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">
@@ -97,9 +118,12 @@ export const BlindBenchmarkSection: React.FC = () => {
                 </span>
               </div>
               <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800">
-                <div
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${(modelA.actualTimeMin / COMMON_LIMITS.timeLimitMinutes) * 100}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
                   className="h-full rounded-full bg-neutral-800 transition-all dark:bg-neutral-200"
-                  style={{ width: `${(modelA.actualTimeMin / COMMON_LIMITS.timeLimitMinutes) * 100}%` }}
                 />
               </div>
             </div>
@@ -119,9 +143,12 @@ export const BlindBenchmarkSection: React.FC = () => {
                 </span>
               </div>
               <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800">
-                <div
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${(modelA.actualCalls / COMMON_LIMITS.callLimitCount) * 100}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
                   className="h-full rounded-full bg-neutral-800 transition-all dark:bg-neutral-200"
-                  style={{ width: `${(modelA.actualCalls / COMMON_LIMITS.callLimitCount) * 100}%` }}
                 />
               </div>
             </div>
@@ -158,6 +185,15 @@ export const BlindBenchmarkSection: React.FC = () => {
 
         {/* Model B Card */}
         <div className="relative overflow-hidden rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.02] p-6 shadow-xs backdrop-blur-xl transition-all dark:border-emerald-500/20 dark:bg-emerald-500/[0.03]">
+          {/* Top Accent Line filling left-to-right */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            className="absolute top-0 right-0 left-0 h-1 origin-left bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-300 dark:from-emerald-600 dark:via-emerald-400 dark:to-teal-300"
+          />
+
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white dark:bg-emerald-500 dark:text-neutral-950">
@@ -172,10 +208,21 @@ export const BlindBenchmarkSection: React.FC = () => {
                 </p>
               </div>
             </div>
-            <span className="flex items-center gap-1 rounded-full bg-emerald-500/20 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300">
-              <CheckCircle2 className="h-3.5 w-3.5" />
-              완료: 10 / 10 PASS
-            </span>
+            <div className="flex flex-col items-end gap-1">
+              <span className="flex items-center gap-1 rounded-full bg-emerald-500/20 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300">
+                <CheckCircle2 className="h-3.5 w-3.5" />
+                완료: 10 / 10 PASS
+              </span>
+              <div className="h-1.5 w-20 overflow-hidden rounded-full bg-emerald-500/20 dark:bg-neutral-800">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '100%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                  className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400"
+                />
+              </div>
+            </div>
           </div>
 
           <p className="mt-3 text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">
@@ -198,9 +245,12 @@ export const BlindBenchmarkSection: React.FC = () => {
                 </span>
               </div>
               <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800">
-                <div
-                  className="h-full rounded-full bg-emerald-500 transition-all"
-                  style={{ width: `${(modelB.actualTimeMin / COMMON_LIMITS.timeLimitMinutes) * 100}%` }}
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${(modelB.actualTimeMin / COMMON_LIMITS.timeLimitMinutes) * 100}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+                  className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400 transition-all"
                 />
               </div>
             </div>
@@ -220,9 +270,12 @@ export const BlindBenchmarkSection: React.FC = () => {
                 </span>
               </div>
               <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800">
-                <div
-                  className="h-full rounded-full bg-emerald-500 transition-all"
-                  style={{ width: `${(modelB.actualCalls / COMMON_LIMITS.callLimitCount) * 100}%` }}
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${(modelB.actualCalls / COMMON_LIMITS.callLimitCount) * 100}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
+                  className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400 transition-all"
                 />
               </div>
             </div>
@@ -260,7 +313,16 @@ export const BlindBenchmarkSection: React.FC = () => {
       </div>
 
       {/* Comprehensive Comparison Table (Card 5) */}
-      <div className="overflow-hidden rounded-2xl border border-neutral-200/80 bg-white/70 shadow-xs backdrop-blur-xl dark:border-neutral-800/80 dark:bg-neutral-900/60">
+      <div className="relative overflow-hidden rounded-2xl border border-neutral-200/80 bg-white/70 shadow-xs backdrop-blur-xl dark:border-neutral-800/80 dark:bg-neutral-900/60">
+        {/* Top Accent Line filling left-to-right */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute top-0 right-0 left-0 h-1 origin-left bg-gradient-to-r from-neutral-500 via-emerald-500 to-teal-400"
+        />
+
         <div className="border-b border-neutral-200/60 px-6 py-4 dark:border-neutral-800/60">
           <h3 className="text-sm font-bold text-neutral-900 dark:text-white">
             지표별 1:1 대조 요약표 (T05-C23 ~ T05-C28)
@@ -396,7 +458,16 @@ export const BlindBenchmarkSection: React.FC = () => {
       </div>
 
       {/* 4-Step Sequence Timeline (T05-C07) */}
-      <div className="rounded-2xl border border-neutral-200/80 bg-white/70 p-6 shadow-xs backdrop-blur-xl dark:border-neutral-800/80 dark:bg-neutral-900/60">
+      <div className="relative overflow-hidden rounded-2xl border border-neutral-200/80 bg-white/70 p-6 shadow-xs backdrop-blur-xl dark:border-neutral-800/80 dark:bg-neutral-900/60">
+        {/* Top Accent Line filling left-to-right */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="absolute top-0 right-0 left-0 h-1 origin-left bg-gradient-to-r from-neutral-500 via-emerald-500 to-teal-400"
+        />
+
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-sm font-bold text-neutral-900 dark:text-white">
@@ -415,8 +486,19 @@ export const BlindBenchmarkSection: React.FC = () => {
           {WORKFLOW_TIMELINE.map((step) => (
             <div
               key={step.id}
-              className="relative flex flex-col justify-between rounded-xl border border-neutral-200/70 bg-neutral-50/60 p-4 transition-all dark:border-neutral-800/70 dark:bg-neutral-900/40"
+              className="relative flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-200/70 bg-neutral-50/60 p-4 transition-all dark:border-neutral-800/70 dark:bg-neutral-900/40"
             >
+              {/* Step indicator filling left-to-right */}
+              <div className="absolute top-0 right-0 left-0 h-0.5 overflow-hidden bg-neutral-200/40 dark:bg-neutral-800/40">
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, ease: 'easeOut', delay: step.order * 0.12 }}
+                  className="h-full origin-left bg-gradient-to-r from-neutral-400 to-neutral-700 dark:from-neutral-600 dark:to-neutral-300"
+                />
+              </div>
+
               <div>
                 <div className="flex items-center justify-between">
                   <span className="rounded-md bg-neutral-900/10 px-2 py-0.5 text-[11px] font-bold text-neutral-900 dark:bg-white/10 dark:text-white">
@@ -436,6 +518,19 @@ export const BlindBenchmarkSection: React.FC = () => {
                   <span className="font-semibold text-neutral-900 dark:text-white">
                     {step.testsPassed} / {step.totalTests}
                   </span>
+                </div>
+                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-neutral-200/60 dark:bg-neutral-800">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${(step.testsPassed / step.totalTests) * 100}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: 'easeOut', delay: step.order * 0.12 + 0.1 }}
+                    className={`h-full rounded-full ${
+                      step.testsPassed === 10
+                        ? 'bg-gradient-to-r from-emerald-500 to-teal-400'
+                        : 'bg-gradient-to-r from-neutral-500 to-neutral-700 dark:from-neutral-400 dark:to-neutral-200'
+                    }`}
+                  />
                 </div>
                 <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-neutral-500">
                   <span>Commit:</span>
