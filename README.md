@@ -63,7 +63,7 @@ flowchart LR
 
     subgraph Step2["Step 2: AI A 중단 & 인계 (13:28)"]
         A_Dev["기초 모듈 구현\nT05-TEST-01~06 (6 PASS)"]
-        A_Stop["상한 내 안전 중단 (28분 / 14회)\n버전: 1a9f8657"]
+        A_Stop["상한 내 안전 중단 (28분 / 14회)\n버전: 3f70c5a0"]
         Handover["7칸 인수인계 문서 작성\nHANDOVER.md\n인수인계 검증"]
         Tests10 --> A_Dev --> A_Stop --> Handover
     end
@@ -126,11 +126,11 @@ flowchart LR
 
 인수인계 전문은 [`HANDOVER.md`](./HANDOVER.md)에 영구 보존되어 있습니다:
 
-- **문서 버전 ID**: `1a9f865733a43aa0a88925bab970ed8affbcb1f1` (T05-C12)
+- **문서 버전 ID**: `3f70c5a0fa96d9b882dc16714bfefe89405d5c66` (T05-C12)
 - **인수인계 누락 점검**: 누락 없음 (0건 확인 완료, T05-C15)
 - **인수인계 7항목 상세 (T05-C10)**:
   1. **목표 (Goal)**: 과제 4 기반 전국 3대 관측소 실시간 비교 + 이상 기온 감지 + LLM 브리핑 엔진 완성
-  2. **현재 상태 (Current Status)**: 멀티 관측소 정규화 엔진 완료 (6 PASS / 4 FAIL), 버전 `1a9f865733a43aa0a88925bab970ed8affbcb1f1`
+  2. **현재 상태 (Current Status)**: 멀티 관측소 정규화 엔진 완료 (6 PASS / 4 FAIL), 버전 `3f70c5a0fa96d9b882dc16714bfefe89405d5c66`
   3. **실행 명령 (Execution Commands)**: `npm install && npm test && npm run dev && npm run build` (새 환경 100% 재현, T05-C11)
   4. **통과 검사 (Passed Tests)**: T05-TEST-01 ~ T05-TEST-06 (6건)
   5. **남은 문제 (Remaining Issues)**: T05-TEST-07 ~ T05-TEST-10 (4건)
@@ -172,7 +172,7 @@ T05-TEST-10 (보안 및 개인정보 무결성): API Key 0건, 개인 식별 정
 모델 표시 ID: Claude 3.7 Sonnet
 실제 사용(분): 28
 실제 요청(회): 14
-A 종료 commit URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/1a9f865733a43aa0a88925bab970ed8affbcb1f1
+A 종료 commit URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/3f70c5a0fa96d9b882dc16714bfefe89405d5c66
 
 A 고정 검사 결과:
 총 10개 검사 중 6개 통과 (6 PASS / 4 FAIL, T05-C09 보존)
@@ -192,7 +192,7 @@ A 고정 검사 결과:
 
 B에게 넘길 인계문:
 # 과제 5 일곱 칸 인수인계 명세 (HANDOVER)
-버전 ID: 1a9f865733a43aa0a88925bab970ed8affbcb1f1
+버전 ID: 3f70c5a0fa96d9b882dc16714bfefe89405d5c66
 누락 점검: 누락 없음 (0건)
 
 1. 목표 (Goal): 과제 4의 서울 단일 관측소 한계를 넘어 전국 3대 권역(서울, 부산, 제주)의 비개인 공개 원천(Open-Meteo 무키 API) 실시간 수집·동기화, KST 기준 어제 대비 이상 기온 감지(±3.0°C) 및 후속 LLM 연계 구조화 브리핑 생성기 완성.
@@ -211,7 +211,7 @@ B에게 넘길 인계문:
 모델 표시 ID: Gemini 3.8 Flash(Antigravity CLI)
 시간 상한(분): 60
 요청 상한(회): 25
-인수인계 문서 기반 요청: 앞선 세션의 대화 전문 없이, 저장소(버전 1a9f865733a43aa0a88925bab970ed8affbcb1f1)와 7칸 인수인계 문서(HANDOVER.md)만을 참조하여 남은 4개 검사(T05-TEST-07~10)를 완성하고 전체 10개 검사를 완주하라. 고정 검사의 삭제, 완화, 기대값 변경은 일체 불가하다.
+인수인계 문서 기반 요청: 앞선 세션의 대화 전문 없이, 저장소(버전 3f70c5a0fa96d9b882dc16714bfefe89405d5c66)와 7칸 인수인계 문서(HANDOVER.md)만을 참조하여 남은 4개 검사(T05-TEST-07~10)를 완성하고 전체 10개 검사를 완주하라. 고정 검사의 삭제, 완화, 기대값 변경은 일체 불가하다.
 인계 URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk
 완료 URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk
 ```
@@ -249,7 +249,7 @@ B에게 넘길 인계문:
 | 분류       | 기준 ID       | 세부 요건                                                                                                           | 달성 근거                                               |     상태      |
 | :--------- | :------------ | :------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------ | :-----------: |
 | **카드 1** | T05-C01 ~ C07 | 검사 10개 고정, 고유 ID, 입력/기대값 명시, 공통 시간(60분)/호출(25회) 상한, 4단계 순서 보증                         | `testSpecs.ts`, `benchmarkData.ts` 확정                 | **100% PASS** |
-| **카드 2** | T05-C08 ~ C09 | AI A 작업 뒤 저장소 버전 ID 보존, AI A 검사 결과(6 PASS / 4 FAIL) 보존                                              | 버전 `1a9f8657` 영구 보존                               | **100% PASS** |
+| **카드 2** | T05-C08 ~ C09 | AI A 작업 뒤 저장소 버전 ID 보존, AI A 검사 결과(6 PASS / 4 FAIL) 보존                                              | 버전 `3f70c5a0` 영구 보존                               | **100% PASS** |
 | **카드 3** | T05-C10 ~ C12 | 인수인계 7항목 완비, 새 폴더 재현성, 문서 버전 ID와 저장소 버전 ID 일치                                             | `HANDOVER.md` 작성 및 검증                              | **100% PASS** |
 | **카드 4** | T05-C13 ~ C20 | 저장소/인수인계만 제공, 인수인계 원문 동일성 일치, 누락 없음(0건), 기능 완성, 검사 불변성 3원칙(삭제/완화/변경 0건) | 원문 동일성 일치, 10/10 PASS 완주                       | **100% PASS** |
 | **카드 4** | T05-C39       | AI A와 AI B 이종 모델/서비스 사용                                                                                   | Claude 3.7 / Cursor ➔ Gemini 3.8 Flash(Antigravity CLI) | **100% PASS** |

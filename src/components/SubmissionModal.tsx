@@ -44,7 +44,7 @@ ${FIXED_TEST_SPECS.map((t) => `${t.id} (${t.name}): ${t.expectedDescription}`).j
 모델 표시 ID: Claude 3.7 Sonnet
 실제 사용(분): 28
 실제 요청(회): 14
-A 종료 commit URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/1a9f865733a43aa0a88925bab970ed8affbcb1f1
+A 종료 commit URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/3f70c5a0fa96d9b882dc16714bfefe89405d5c66
 
 A 고정 검사 결과:
 총 10개 검사 중 6개 통과 (6 PASS / 4 FAIL, T05-C09 보존)
@@ -64,7 +64,7 @@ A 고정 검사 결과:
 
 B에게 넘길 인계문:
 # 과제 5 일곱 칸 인수인계 명세 (HANDOVER)
-버전 ID: 1a9f865733a43aa0a88925bab970ed8affbcb1f1
+버전 ID: 3f70c5a0fa96d9b882dc16714bfefe89405d5c66
 누락 점검: 누락 없음 (0건)
 
 1. 목표 (Goal): 과제 4의 서울 단일 관측소 한계를 넘어 전국 3대 권역(서울, 부산, 제주)의 비개인 공개 원천(Open-Meteo 무키 API) 실시간 수집·동기화, KST 기준 어제 대비 이상 기온 감지(±3.0°C) 및 후속 LLM 연계 구조화 브리핑 생성기 완성.
@@ -79,7 +79,7 @@ B에게 넘길 인계문:
 모델 표시 ID: Gemini 3.8 Flash(Antigravity CLI)
 시간 상한(분): ${COMMON_LIMITS.timeLimitMinutes}
 요청 상한(회): ${COMMON_LIMITS.callLimitCount}
-인수인계 문서 기반 요청: 앞선 세션의 대화 전문 없이, 저장소(버전 1a9f865733a43aa0a88925bab970ed8affbcb1f1)와 7칸 인수인계 문서(HANDOVER.md)만을 참조하여 남은 4개 검사(T05-TEST-07~10)를 완성하고 전체 10개 검사를 완주하라. 고정 검사의 삭제, 완화, 기대값 변경은 일체 불가하다.
+인수인계 문서 기반 요청: 앞선 세션의 대화 전문 없이, 저장소(버전 3f70c5a0fa96d9b882dc16714bfefe89405d5c66)와 7칸 인수인계 문서(HANDOVER.md)만을 참조하여 남은 4개 검사(T05-TEST-07~10)를 완성하고 전체 10개 검사를 완주하라. 고정 검사의 삭제, 완화, 기대값 변경은 일체 불가하다.
 인계 URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk
 완료 URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk`;
 

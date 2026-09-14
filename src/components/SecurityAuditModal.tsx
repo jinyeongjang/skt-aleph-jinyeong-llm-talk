@@ -15,7 +15,7 @@ export const SecurityAuditModal: React.FC<SecurityAuditModalProps> = ({ isOpen, 
       'https://api.open-meteo.com/v1/forecast?latitude=37.5665&longitude=126.9780&current=temperature_2m&timezone=Asia%2FSeoul',
       '과제 5: 대화가 끊겨도 이어지는 프로젝트 - 무로그인 공개 정적 웹',
       'Model A (Cursor Claude 3.7 Sonnet) vs Model B (Gemini 3.8 Flash(Antigravity CLI))',
-      '1a9f865733a43aa0a88925bab970ed8affbcb1f1',
+      '3f70c5a0fa96d9b882dc16714bfefe89405d5c66',
     ];
     return runSecurityAudit(sample);
   });
