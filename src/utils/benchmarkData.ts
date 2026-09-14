@@ -32,7 +32,7 @@ export const BENCHMARK_MODELS: Record<'a' | 'b', ModelMetrics> = {
     errorRuns: 3, // T05-C25 (하나 이상의 FAIL이 나온 회차 수: 3회)
     passedTestsCount: 6, // T05-C09, T05-C27 (T05-TEST-01~06 통과, 7~10 미구현)
     totalTestsCount: 10,
-    startCommit: 'b4a1c72f109247d890a54e9089e31d8c0b240101',
+    startCommit: '1a9f865733a43aa0a88925bab970ed8affbcb1f1',
     endCommit: '3f70c5a0fa96d9b882dc16714bfefe89405d5c66',
     linesAdded: 420,
     linesDeleted: 35,
@@ -51,7 +51,7 @@ export const BENCHMARK_MODELS: Record<'a' | 'b', ModelMetrics> = {
     passedTestsCount: 10, // T05-C16, T05-C27 (10개 전수 통과)
     totalTestsCount: 10,
     startCommit: '3f70c5a0fa96d9b882dc16714bfefe89405d5c66',
-    endCommit: '942cf9de4238292e4128746b63a786dd640d8bf1',
+    endCommit: 'b884ae864a90fb1f14fb86b4b41993fe03e11679',
     linesAdded: 315,
     linesDeleted: 18,
     roleDescription:
@@ -71,7 +71,7 @@ export const WORKFLOW_TIMELINE: WorkflowTimelineStep[] = [
     phase: 'A 시작',
     timestamp: '2026-09-14 13:00:00 KST',
     description: '과제 4 기반 작은 개선 선정, 검사 10개 및 공통 상한(60분, 25회) 사전 고정 후 작업 착수',
-    commitHash: 'b4a1c72f109247d890a54e9089e31d8c0b240101',
+    commitHash: '1a9f865733a43aa0a88925bab970ed8affbcb1f1',
     testsPassed: 0,
     totalTests: 10,
     status: 'completed',
@@ -109,7 +109,7 @@ export const WORKFLOW_TIMELINE: WorkflowTimelineStep[] = [
     timestamp: '2026-09-14 13:57:00 KST',
     description:
       '이상 기온 감지 및 LLM 브리핑 엔진 완성, 고정 검사 10개 전수 100% 통과(검사 삭제/완화/변경 0건) 및 보고서 산출',
-    commitHash: '942cf9de4238292e4128746b63a786dd640d8bf1',
+    commitHash: 'b884ae864a90fb1f14fb86b4b41993fe03e11679',
     testsPassed: 10,
     totalTests: 10,
     status: 'completed',

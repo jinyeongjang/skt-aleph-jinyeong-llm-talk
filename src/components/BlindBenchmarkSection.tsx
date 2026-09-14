@@ -173,11 +173,27 @@ export const BlindBenchmarkSection: React.FC = () => {
             <div className="space-y-1 pt-1 text-[11px] text-neutral-500 dark:text-neutral-400">
               <div className="flex items-center justify-between font-mono">
                 <span>시작 Commit:</span>
-                <span className="text-neutral-700 dark:text-neutral-300">{modelA.startCommit.slice(0, 10)}...</span>
+                <a
+                  href={`https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/${modelA.startCommit}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-neutral-700 underline underline-offset-2 transition-colors hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white"
+                  title="A 시작 커밋 보기"
+                >
+                  {modelA.startCommit.slice(0, 10)}...
+                </a>
               </div>
               <div className="flex items-center justify-between font-mono">
                 <span>중단 Commit:</span>
-                <span className="text-neutral-700 dark:text-neutral-300">{modelA.endCommit.slice(0, 10)}...</span>
+                <a
+                  href={`https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/${modelA.endCommit}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-neutral-700 underline underline-offset-2 transition-colors hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white"
+                  title="A 종료·인계 커밋 보기"
+                >
+                  {modelA.endCommit.slice(0, 10)}...
+                </a>
               </div>
             </div>
           </div>
@@ -301,11 +317,27 @@ export const BlindBenchmarkSection: React.FC = () => {
             <div className="space-y-1 pt-1 text-[11px] text-neutral-500 dark:text-neutral-400">
               <div className="flex items-center justify-between font-mono">
                 <span>인계받은 Commit:</span>
-                <span className="text-neutral-700 dark:text-neutral-300">{modelB.startCommit.slice(0, 10)}...</span>
+                <a
+                  href={`https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/${modelB.startCommit}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-neutral-700 underline underline-offset-2 transition-colors hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white"
+                  title="B 시작 커밋 보기"
+                >
+                  {modelB.startCommit.slice(0, 10)}...
+                </a>
               </div>
               <div className="flex items-center justify-between font-mono">
                 <span>최종 완료 Commit:</span>
-                <span className="text-neutral-700 dark:text-neutral-300">{modelB.endCommit.slice(0, 10)}...</span>
+                <a
+                  href={`https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/${modelB.endCommit}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-neutral-700 underline underline-offset-2 transition-colors hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white"
+                  title="B 완료 커밋 보기"
+                >
+                  {modelB.endCommit.slice(0, 10)}...
+                </a>
               </div>
             </div>
           </div>
@@ -534,7 +566,15 @@ export const BlindBenchmarkSection: React.FC = () => {
                 </div>
                 <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-neutral-500">
                   <span>Commit:</span>
-                  <span>{step.commitHash.slice(0, 8)}</span>
+                  <a
+                    href={`https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/${step.commitHash}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline underline-offset-2 transition-colors hover:text-neutral-900 dark:hover:text-white"
+                    title={`${step.phase} 커밋 보기`}
+                  >
+                    {step.commitHash.slice(0, 8)}
+                  </a>
                 </div>
               </div>
             </div>

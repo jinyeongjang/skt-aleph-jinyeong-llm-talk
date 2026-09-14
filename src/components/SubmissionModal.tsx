@@ -13,7 +13,8 @@ export const SubmissionModal: React.FC<SubmissionModalProps> = ({ isOpen, onClos
   const [copied3Line, setCopied3Line] = useState(false);
   const [copiedLmsA, setCopiedLmsA] = useState(false);
   const [copiedLmsAEnd, setCopiedLmsAEnd] = useState(false);
-  const [copiedLmsB, setCopiedLmsB] = useState(false);
+  const [copiedLmsBStart, setCopiedLmsBStart] = useState(false);
+  const [copiedLmsBEnd, setCopiedLmsBEnd] = useState(false);
 
   if (!isOpen) return null;
 
@@ -35,7 +36,7 @@ export const SubmissionModal: React.FC<SubmissionModalProps> = ({ isOpen, onClos
 시간 상한(분): ${COMMON_LIMITS.timeLimitMinutes}
 요청 상한(회): ${COMMON_LIMITS.callLimitCount}
 두 모델에 똑같이 줄 최초 요청: 과제 4(오늘의 진짜 정보판)의 서울 단일 관측소 한계를 넘어 전국 3대 권역(서울, 부산, 제주) 멀티 관측소 실시간 기상 관측 동기화 + KST 기준 어제 대비 이상 기온 감지(Anomaly Alert) 및 멀티 LLM 연계 구조화 브리핑 엔진을 완성하라. 사전 고정 검사 10개를 100% 만족해야 한다.
-시작 URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk
+시작 commit URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/1a9f865733a43aa0a88925bab970ed8affbcb1f1
 고정 검사 목록·기대 결과:
 ${FIXED_TEST_SPECS.map((t) => `${t.id} (${t.name}): ${t.expectedDescription}`).join('\n')}`;
 
@@ -67,7 +68,7 @@ B에게 넘길 인계문:
 버전 ID: 3f70c5a0fa96d9b882dc16714bfefe89405d5c66
 누락 점검: 누락 없음 (0건)
 
-1. 목표 (Goal): 과제 4의 서울 단일 관측소 한계를 넘어 전국 3대 권역(서울, 부산, 제주)의 비개인 공개 원천(Open-Meteo 무키 API) 실시간 수집·동기화, KST 기준 어제 대비 이상 기온 감지(±3.0°C) 및 후속 LLM 연계 구조화 브리핑 생성기 완성.
+1. 목표 (Goal): 과제 4의 서울 단일 관측소 한계를 넘어 전국 3대 권역(수도권 서울, 영남권 부산, 제주권 서귀포)의 비개인 공개 원천(Open-Meteo 무키 API) 실시간 수집·동기화, KST 기준 어제 대비 기온 급변(임계치 ±3.0°C)을 감지하는 이상 기온 감지(Anomaly Alert) 엔진과 후속 LLM 연계를 위한 구조화 브리핑 생성기 완성.
 2. 현재 상태 (Current Status): AI A(소요 28분, 호출 14회, 오류 3회)에서 6 PASS / 4 FAIL 상태로 안전하게 작업 중단.
 3. 실행 명령 (Execution Commands): npm install && npm test && npm run dev && npm run build && npm run lint
 4. 통과 검사 (Passed Tests, 6건): T05-TEST-01~06 통과
@@ -75,13 +76,33 @@ B에게 넘길 인계문:
 6. 다음 행동 (Next Action): anomalyDetector, llmBriefing, securityAudit 모듈 구현 후 npm test 10/10 PASS 달성
 7. 건드리지 말 것 (금지 범위): 사전 고정 10대 검사 불변, 완전 무키 비개인 원천 원칙 준수, stale 배지 및 복구 로직 유지`;
 
-  const lmsModelBText = `서비스 표시 ID: Antigravity CLI
-모델 표시 ID: Gemini 3.8 Flash(Antigravity CLI)
-시간 상한(분): ${COMMON_LIMITS.timeLimitMinutes}
-요청 상한(회): ${COMMON_LIMITS.callLimitCount}
-인수인계 문서 기반 요청: 앞선 세션의 대화 전문 없이, 저장소(버전 3f70c5a0fa96d9b882dc16714bfefe89405d5c66)와 7칸 인수인계 문서(HANDOVER.md)만을 참조하여 남은 4개 검사(T05-TEST-07~10)를 완성하고 전체 10개 검사를 완주하라. 고정 검사의 삭제, 완화, 기대값 변경은 일체 불가하다.
-인계 URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk
-완료 URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk`;
+  // LMS 입력 폼 복사용 텍스트 (Image 5-9 대응: B 모델 시작)
+  const lmsModelBStartText = `서비스 표시 ID(A의 서비스·모델 조합과 달라야 함):
+Antigravity CLI
+
+모델 표시 ID(A의 서비스·모델 조합과 달라야 함):
+Gemini 3.8 Flash`;
+
+  // LMS 입력 폼 복사용 텍스트 (Image 5-10 대응: B 모델 종료)
+  const lmsModelBEndText = `서비스 표시 ID: Antigravity CLI
+모델 표시 ID: Gemini 3.8 Flash
+실제 사용(분): 22
+실제 요청(회): 11
+B 종료 commit URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/b884ae864a90fb1f14fb86b4b41993fe03e11679
+
+B 고정 검사 결과:
+사전 고정 10대 검사 전수 100% 통과 (10 PASS / 0 FAIL, T05-C17 완주)
+[통과 검사 (PASS) - 10건 전수 통과]
+- T05-TEST-01: 멀티 관측소 메타데이터 유효성 검증 (PASS)
+- T05-TEST-02: 멀티 관측소 실시간 관측값 정규화 (NormalizedReading) (PASS)
+- T05-TEST-03: 단일 관측소 외부 실패 시 격리 및 타 관측소 정상값 보존 (PASS)
+- T05-TEST-04: 동일 Asia/Seoul 날짜 다회 수집 시 단일 행 원자적 갱신 (PASS)
+- T05-TEST-05: 익일 KST 날짜 수집 시 신규 일별 기록 행 생성 (PASS)
+- T05-TEST-06: 전국 기온 편차(Spread: 최고 - 최저) 산출 정확성 (PASS)
+- T05-TEST-07: 어제 대비 급변 이상 기온 감지(Anomaly Alert) 트리거 (PASS)
+- T05-TEST-08: 이상 기온 판정 경계값(|ΔT| == 2.99°C vs 3.00°C) 정확성 (PASS)
+- T05-TEST-09: 멀티 LLM 연계 브리핑 생성기 (Markdown & 구조화 JSON) (PASS)
+- T05-TEST-10: 보안 무결성: 비밀키 원문 및 개인정보(PII) 0건 검증 (PASS)`;
 
   const copyToClipboard = (text: string, setFn: (v: boolean) => void) => {
     navigator.clipboard.writeText(text);
@@ -200,10 +221,10 @@ B에게 넘길 인계문:
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               <div className="rounded-xl border border-neutral-200/80 bg-neutral-50/60 p-3.5 dark:border-neutral-800/80 dark:bg-neutral-950/40">
                 <div className="mb-2 flex items-center justify-between">
-                  <span className="font-bold text-neutral-900 dark:text-white">A 시작 기록 (5-7)</span>
+                  <span className="font-bold text-neutral-900 dark:text-white">A 시작 (5-7)</span>
                   <button
                     type="button"
                     onClick={() => copyToClipboard(lmsModelAText, setCopiedLmsA)}
@@ -237,18 +258,35 @@ B에게 넘길 인계문:
 
               <div className="rounded-xl border border-neutral-200/80 bg-neutral-50/60 p-3.5 dark:border-neutral-800/80 dark:bg-neutral-950/40">
                 <div className="mb-2 flex items-center justify-between">
-                  <span className="font-bold text-neutral-900 dark:text-white">B 연계 기록 (5-6)</span>
+                  <span className="font-bold text-neutral-900 dark:text-white">B 시작 (5-9)</span>
                   <button
                     type="button"
-                    onClick={() => copyToClipboard(lmsModelBText, setCopiedLmsB)}
+                    onClick={() => copyToClipboard(lmsModelBStartText, setCopiedLmsBStart)}
                     className="flex items-center gap-1 rounded-md bg-white px-2 py-1 text-[10px] font-semibold text-neutral-700 shadow-xs hover:bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-200"
                   >
-                    {copiedLmsB ? <Check className="h-3 w-3 text-emerald-600" /> : <Copy className="h-3 w-3" />}
-                    <span>{copiedLmsB ? '복사됨' : '복사'}</span>
+                    {copiedLmsBStart ? <Check className="h-3 w-3 text-emerald-600" /> : <Copy className="h-3 w-3" />}
+                    <span>{copiedLmsBStart ? '복사됨' : '복사'}</span>
                   </button>
                 </div>
                 <pre className="max-h-36 overflow-y-auto rounded-lg bg-neutral-900 p-2.5 font-mono text-[10px] whitespace-pre-wrap text-neutral-300">
-                  {lmsModelBText}
+                  {lmsModelBStartText}
+                </pre>
+              </div>
+
+              <div className="rounded-xl border border-neutral-200/80 bg-neutral-50/60 p-3.5 dark:border-neutral-800/80 dark:bg-neutral-950/40">
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="font-bold text-neutral-900 dark:text-white">B 종료 (5-10)</span>
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard(lmsModelBEndText, setCopiedLmsBEnd)}
+                    className="flex items-center gap-1 rounded-md bg-white px-2 py-1 text-[10px] font-semibold text-neutral-700 shadow-xs hover:bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-200"
+                  >
+                    {copiedLmsBEnd ? <Check className="h-3 w-3 text-emerald-600" /> : <Copy className="h-3 w-3" />}
+                    <span>{copiedLmsBEnd ? '복사됨' : '복사'}</span>
+                  </button>
+                </div>
+                <pre className="max-h-36 overflow-y-auto rounded-lg bg-neutral-900 p-2.5 font-mono text-[10px] whitespace-pre-wrap text-neutral-300">
+                  {lmsModelBEndText}
                 </pre>
               </div>
             </div>
