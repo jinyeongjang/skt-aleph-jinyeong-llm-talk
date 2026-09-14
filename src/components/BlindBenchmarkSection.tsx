@@ -44,12 +44,12 @@ export const BlindBenchmarkSection: React.FC = () => {
           {showRealNames ? (
             <>
               <EyeOff className="h-4 w-4" />
-              <span>블라인드 평가 모드 활성화 (이름 가리기)</span>
+              <span>블라인드 평가 모드 활성화</span>
             </>
           ) : (
             <>
               <Eye className="h-4 w-4" />
-              <span>실제 모델·서비스 이름 보기 (Unmask)</span>
+              <span>블라인드 평가 모드 비활성화</span>
             </>
           )}
         </button>

@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
           <div className="flex items-center gap-2.5">
             <h1 className="text-sm font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-              과제 5: 대화가 끊겨도 이어지는 프로젝트
+              대화가 끊겨도 이어지는 프로젝트
             </h1>
             <span className="hidden items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-bold text-emerald-700 sm:inline-flex dark:bg-emerald-500/20 dark:text-emerald-300">
               <CheckCircle2 className="h-3.5 w-3.5" /> 10/10 PASS
