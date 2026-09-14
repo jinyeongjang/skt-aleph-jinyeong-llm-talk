@@ -25,7 +25,7 @@
 
 | 기준 ID     | 기준 요건                                          | 구현 및 충족 근거                                                                         | 파일 위치                                                                                                                                          |   상태   |
 | :---------- | :------------------------------------------------- | :---------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :------: |
-| **T05-C08** | AI A 작업 뒤의 저장소 버전 ID가 보존되어 있다      | AI A 작업 중단 시점의 커밋 해시(`e8c3d91b058142a78129ef9081237a1c89020202`)가 영구 보존됨 | [`HANDOVER.md`](file:///C:/Users/user/Desktop/SKT_ALEPH/skt-aleph-jinyeong-llm-talk/HANDOVER.md)                                                   | **통과** |
+| **T05-C08** | AI A 작업 뒤의 저장소 버전 ID가 보존되어 있다      | AI A 작업 중단 시점의 커밋 해시(`1a9f865733a43aa0a88925bab970ed8affbcb1f1`)가 영구 보존됨 | [`HANDOVER.md`](file:///C:/Users/user/Desktop/SKT_ALEPH/skt-aleph-jinyeong-llm-talk/HANDOVER.md)                                                   | **통과** |
 | **T05-C09** | AI A 작업 뒤 같은 검사 10개의 결과가 보존되어 있다 | AI A 중단 시점의 6 PASS / 4 FAIL 결과가 고정 검사 뷰 및 인수인계 문서에 정확히 보존됨     | [`src/components/FixedTestsSection.tsx`](file:///C:/Users/user/Desktop/SKT_ALEPH/skt-aleph-jinyeong-llm-talk/src/components/FixedTestsSection.tsx) | **통과** |
 
 ---

@@ -33,7 +33,7 @@ export const BENCHMARK_MODELS: Record<'a' | 'b', ModelMetrics> = {
     passedTestsCount: 6, // T05-C09, T05-C27 (T05-TEST-01~06 통과, 7~10 미구현)
     totalTestsCount: 10,
     startCommit: 'b4a1c72f109247d890a54e9089e31d8c0b240101',
-    endCommit: 'e8c3d91b058142a78129ef9081237a1c89020202',
+    endCommit: '1a9f865733a43aa0a88925bab970ed8affbcb1f1',
     linesAdded: 420,
     linesDeleted: 35,
     roleDescription: '멀티 관측소 메타데이터 정의, Open-Meteo API 정규화 수집기 및 전국 편차 계산 기초 모듈 구현',
@@ -50,7 +50,7 @@ export const BENCHMARK_MODELS: Record<'a' | 'b', ModelMetrics> = {
     errorRuns: 1, // T05-C25 (1회 수정 후 전수 PASS)
     passedTestsCount: 10, // T05-C16, T05-C27 (10개 전수 통과)
     totalTestsCount: 10,
-    startCommit: 'e8c3d91b058142a78129ef9081237a1c89020202',
+    startCommit: '1a9f865733a43aa0a88925bab970ed8affbcb1f1',
     endCommit: '942cf9de4238292e4128746b63a786dd640d8bf1',
     linesAdded: 315,
     linesDeleted: 18,
@@ -84,7 +84,7 @@ export const WORKFLOW_TIMELINE: WorkflowTimelineStep[] = [
     timestamp: '2026-09-14 13:28:00 KST',
     description:
       '멀티 관측소 정규화 및 편차 산출 구현 후 상한 내 중단(28분/14회). 6건 PASS 보존 및 7칸 인수인계 문서 작성',
-    commitHash: 'e8c3d91b058142a78129ef9081237a1c89020202',
+    commitHash: '1a9f865733a43aa0a88925bab970ed8affbcb1f1',
     testsPassed: 6,
     totalTests: 10,
     status: 'completed',
@@ -96,7 +96,7 @@ export const WORKFLOW_TIMELINE: WorkflowTimelineStep[] = [
     phase: 'B 시작',
     timestamp: '2026-09-14 13:35:00 KST',
     description: '이전 대화 전문 없이 저장소와 인수인계 문서만으로 새 세션(다른 모델) 작업 시작',
-    commitHash: 'e8c3d91b058142a78129ef9081237a1c89020202',
+    commitHash: '1a9f865733a43aa0a88925bab970ed8affbcb1f1',
     testsPassed: 6,
     totalTests: 10,
     status: 'completed',

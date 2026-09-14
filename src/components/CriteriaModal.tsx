@@ -80,7 +80,7 @@ const CRITERIA_DATA: CriterionItem[] = [
     category: '카드 2 · AI A의 작업을 멈추기',
     title: 'AI A 저장소 버전 ID 보존',
     description: 'AI A 작업 뒤의 저장소 버전 ID가 보존되어 있다.',
-    proof: '중단 시점 커밋 ID (e8c3d91b058142a78129ef9081237a1c89020202) 영구 보존',
+    proof: '중단 시점 커밋 ID (1a9f865733a43aa0a88925bab970ed8affbcb1f1) 영구 보존',
     passed: true,
   },
   {

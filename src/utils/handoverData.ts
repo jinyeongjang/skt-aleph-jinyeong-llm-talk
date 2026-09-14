@@ -16,7 +16,7 @@ export const HANDOVER_DOC_CONTENT: HandoverSevenItems = {
 
   // 2. 현재 상태
   currentStatus:
-    'AI A 세션(소요 28분 / 호출 14회)에서 멀티 관측소 메타데이터 정의, Open-Meteo 무키 실시간 API 정규화 수집기, 2일 시드 데이터, 그리고 전국 최고-최저 기온 편차(Spread) 산출 엔진 구현을 완료하고 상한 내에서 안전하게 세션을 중단함. 저장소 버전 ID: e8c3d91b058142a78129ef9081237a1c89020202.',
+    'AI A 세션(소요 28분 / 호출 14회)에서 멀티 관측소 메타데이터 정의, Open-Meteo 무키 실시간 API 정규화 수집기, 2일 시드 데이터, 그리고 전국 최고-최저 기온 편차(Spread) 산출 엔진 구현을 완료하고 상한 내에서 안전하게 세션을 중단함. 저장소 버전 ID: 1a9f865733a43aa0a88925bab970ed8affbcb1f1.',
 
   // 3. 실행 명령
   executionCommands: [
@@ -59,7 +59,7 @@ export const HANDOVER_DOC_CONTENT: HandoverSevenItems = {
     '1) 사전 고정 10대 검사(FIXED_TEST_SPECS)의 ID, 입력값, 기대값은 절대로 삭제, 완화, 변경하지 말 것 (T05-C18~C20 위반 금지)\n2) 무키(Keyless) 비개인 공개 원천 원칙 준수 — 외부 유료 키나 인증 토큰을 코드에 주입하지 말 것 (T05-C38)\n3) 기존 과제 4의 stale 배지 및 직전 정상값 보존 복구 메커니즘을 훼손하지 말 것',
 
   // 메타데이터
-  versionId: 'e8c3d91b058142a78129ef9081237a1c89020202',
+  versionId: '1a9f865733a43aa0a88925bab970ed8affbcb1f1',
   sha256Hash: 'a7f59c239d1b64e08c1a84f378d910b42c67e8912f05a3b2c148e67890abcdef',
   missingItemsStatus: '누락 없음 (인수인계 7항목 및 재현 절차 완비, 0건)',
 };

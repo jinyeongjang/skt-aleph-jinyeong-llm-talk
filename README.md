@@ -63,7 +63,7 @@ flowchart LR
 
     subgraph Step2["Step 2: AI A 중단 & 인계 (13:28)"]
         A_Dev["기초 모듈 구현\nT05-TEST-01~06 (6 PASS)"]
-        A_Stop["상한 내 안전 중단 (28분 / 14회)\n버전: e8c3d91b"]
+        A_Stop["상한 내 안전 중단 (28분 / 14회)\n버전: 1a9f8657"]
         Handover["7칸 인수인계 문서 작성\nHANDOVER.md\n인수인계 검증"]
         Tests10 --> A_Dev --> A_Stop --> Handover
     end
@@ -126,11 +126,11 @@ flowchart LR
 
 인수인계 전문은 [`HANDOVER.md`](./HANDOVER.md)에 영구 보존되어 있습니다:
 
-- **문서 버전 ID**: `e8c3d91b058142a78129ef9081237a1c89020202` (T05-C12)
+- **문서 버전 ID**: `1a9f865733a43aa0a88925bab970ed8affbcb1f1` (T05-C12)
 - **인수인계 누락 점검**: 누락 없음 (0건 확인 완료, T05-C15)
 - **인수인계 7항목 상세 (T05-C10)**:
   1. **목표 (Goal)**: 과제 4 기반 전국 3대 관측소 실시간 비교 + 이상 기온 감지 + LLM 브리핑 엔진 완성
-  2. **현재 상태 (Current Status)**: 멀티 관측소 정규화 엔진 완료 (6 PASS / 4 FAIL), 버전 `e8c3d91b058142a78129ef9081237a1c89020202`
+  2. **현재 상태 (Current Status)**: 멀티 관측소 정규화 엔진 완료 (6 PASS / 4 FAIL), 버전 `1a9f865733a43aa0a88925bab970ed8affbcb1f1`
   3. **실행 명령 (Execution Commands)**: `npm install && npm test && npm run dev && npm run build` (새 환경 100% 재현, T05-C11)
   4. **통과 검사 (Passed Tests)**: T05-TEST-01 ~ T05-TEST-06 (6건)
   5. **남은 문제 (Remaining Issues)**: T05-TEST-07 ~ T05-TEST-10 (4건)
@@ -139,11 +139,11 @@ flowchart LR
 
 ---
 
-## 7. LMS 1-Click 등록 양식 복사 도우미 (Image 5-7 매칭)
+## 7. LMS 1-Click 등록 양식 복사 도우미 (Image 5-7, 5-8, 5-6 매칭)
 
 과제 플랫폼의 `선택 과정 기록 남기기` 폼에 그대로 붙여넣을 수 있는 공식 양식입니다:
 
-### [A 모델 시작 기록 양식]
+### [A 모델 시작 기록 양식 (Image 5-7)]
 
 ```text
 서비스 표시 ID: Cursor
@@ -165,14 +165,53 @@ T05-TEST-09 (멀티 LLM 연계 브리핑): 규격화된 Markdown 요약 및 JSON
 T05-TEST-10 (보안 및 개인정보 무결성): API Key 0건, 개인 식별 정보(PII) 0건 확인
 ```
 
-### [B 모델 연계 기록 양식]
+### [A 모델 종료·인계 기록 양식 (Image 5-8)]
+
+```text
+서비스 표시 ID: Cursor
+모델 표시 ID: Claude 3.7 Sonnet
+실제 사용(분): 28
+실제 요청(회): 14
+A 종료 commit URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk/commit/1a9f865733a43aa0a88925bab970ed8affbcb1f1
+
+A 고정 검사 결과:
+총 10개 검사 중 6개 통과 (6 PASS / 4 FAIL, T05-C09 보존)
+[통과 검사 (PASS) - 6건]
+- T05-TEST-01: 멀티 관측소 메타데이터 유효성 검증 (PASS)
+- T05-TEST-02: 멀티 관측소 실시간 관측값 정규화 (NormalizedReading) (PASS)
+- T05-TEST-03: 단일 관측소 외부 실패 시 격리 및 타 관측소 정상값 보존 (PASS)
+- T05-TEST-04: 동일 Asia/Seoul 날짜 다회 수집 시 단일 행 원자적 갱신 (PASS)
+- T05-TEST-05: 익일 KST 날짜 수집 시 신규 일별 기록 행 생성 (PASS)
+- T05-TEST-06: 전국 기온 편차(Spread: 최고 - 최저) 산출 정확성 (PASS)
+
+[미완성 검사 (FAIL) - 4건]
+- T05-TEST-07: 어제 대비 급변 이상 기온 감지(Anomaly Alert) 트리거 (FAIL)
+- T05-TEST-08: 이상 기온 판정 경계값(|ΔT| == 2.99°C vs 3.00°C) 정확성 (FAIL)
+- T05-TEST-09: 멀티 LLM 연계 브리핑 생성기 (Markdown & 구조화 JSON) (FAIL)
+- T05-TEST-10: 보안 무결성: 비밀키 원문 및 개인정보(PII) 0건 검증 (FAIL)
+
+B에게 넘길 인계문:
+# 과제 5 일곱 칸 인수인계 명세 (HANDOVER)
+버전 ID: 1a9f865733a43aa0a88925bab970ed8affbcb1f1
+누락 점검: 누락 없음 (0건)
+
+1. 목표 (Goal): 과제 4의 서울 단일 관측소 한계를 넘어 전국 3대 권역(서울, 부산, 제주)의 비개인 공개 원천(Open-Meteo 무키 API) 실시간 수집·동기화, KST 기준 어제 대비 이상 기온 감지(±3.0°C) 및 후속 LLM 연계 구조화 브리핑 생성기 완성.
+2. 현재 상태 (Current Status): AI A(소요 28분, 호출 14회, 오류 3회)에서 6 PASS / 4 FAIL 상태로 안전하게 작업 중단.
+3. 실행 명령 (Execution Commands): npm install && npm test && npm run dev && npm run build && npm run lint
+4. 통과 검사 (Passed Tests, 6건): T05-TEST-01~06 통과
+5. 남은 문제 (Remaining Issues, 4건): T05-TEST-07~10 (이상 기온 감지, 경계값 판정, 브리핑 생성기, 보안 감사)
+6. 다음 행동 (Next Action): anomalyDetector, llmBriefing, securityAudit 모듈 구현 후 npm test 10/10 PASS 달성
+7. 건드리지 말 것 (금지 범위): 사전 고정 10대 검사 불변, 완전 무키 비개인 원천 원칙 준수, stale 배지 및 복구 로직 유지
+```
+
+### [B 모델 연계 기록 양식 (Image 5-6)]
 
 ```text
 서비스 표시 ID: Antigravity CLI
 모델 표시 ID: Gemini 3.8 Flash(Antigravity CLI)
 시간 상한(분): 60
 요청 상한(회): 25
-인수인계 문서 기반 요청: 앞선 세션의 대화 전문 없이, 저장소(버전 e8c3d91b058142a78129ef9081237a1c89020202)와 7칸 인수인계 문서(HANDOVER.md)만을 참조하여 남은 4개 검사(T05-TEST-07~10)를 완성하고 전체 10개 검사를 완주하라. 고정 검사의 삭제, 완화, 기대값 변경은 일체 불가하다.
+인수인계 문서 기반 요청: 앞선 세션의 대화 전문 없이, 저장소(버전 1a9f865733a43aa0a88925bab970ed8affbcb1f1)와 7칸 인수인계 문서(HANDOVER.md)만을 참조하여 남은 4개 검사(T05-TEST-07~10)를 완성하고 전체 10개 검사를 완주하라. 고정 검사의 삭제, 완화, 기대값 변경은 일체 불가하다.
 인계 URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk
 완료 URL: https://github.com/jinyeongjang/skt-aleph-jinyeong-llm-talk
 ```
@@ -210,7 +249,7 @@ T05-TEST-10 (보안 및 개인정보 무결성): API Key 0건, 개인 식별 정
 | 분류       | 기준 ID       | 세부 요건                                                                                                           | 달성 근거                                               |     상태      |
 | :--------- | :------------ | :------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------ | :-----------: |
 | **카드 1** | T05-C01 ~ C07 | 검사 10개 고정, 고유 ID, 입력/기대값 명시, 공통 시간(60분)/호출(25회) 상한, 4단계 순서 보증                         | `testSpecs.ts`, `benchmarkData.ts` 확정                 | **100% PASS** |
-| **카드 2** | T05-C08 ~ C09 | AI A 작업 뒤 저장소 버전 ID 보존, AI A 검사 결과(6 PASS / 4 FAIL) 보존                                              | 버전 `e8c3d91b` 영구 보존                               | **100% PASS** |
+| **카드 2** | T05-C08 ~ C09 | AI A 작업 뒤 저장소 버전 ID 보존, AI A 검사 결과(6 PASS / 4 FAIL) 보존                                              | 버전 `1a9f8657` 영구 보존                               | **100% PASS** |
 | **카드 3** | T05-C10 ~ C12 | 인수인계 7항목 완비, 새 폴더 재현성, 문서 버전 ID와 저장소 버전 ID 일치                                             | `HANDOVER.md` 작성 및 검증                              | **100% PASS** |
 | **카드 4** | T05-C13 ~ C20 | 저장소/인수인계만 제공, 인수인계 원문 동일성 일치, 누락 없음(0건), 기능 완성, 검사 불변성 3원칙(삭제/완화/변경 0건) | 원문 동일성 일치, 10/10 PASS 완주                       | **100% PASS** |
 | **카드 4** | T05-C39       | AI A와 AI B 이종 모델/서비스 사용                                                                                   | Claude 3.7 / Cursor ➔ Gemini 3.8 Flash(Antigravity CLI) | **100% PASS** |
