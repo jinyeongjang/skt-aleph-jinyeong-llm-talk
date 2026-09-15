@@ -38,9 +38,9 @@ export const App: React.FC = () => {
       {/* 0. Ambient Glass Background Lighting (모노크롬 & 은은한 글래스모피즘 앰비언트 광원) */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
         <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-neutral-400/15 blur-[100px] dark:bg-neutral-600/10" />
-        <div className="absolute top-1/4 -right-40 h-[500px] w-[500px] rounded-full bg-emerald-500/10 blur-[130px] dark:bg-emerald-500/[0.07]" />
-        <div className="absolute top-2/3 -left-32 h-[450px] w-[450px] rounded-full bg-teal-500/10 blur-[120px] dark:bg-teal-500/[0.06]" />
-        <div className="absolute right-1/4 -bottom-40 h-[550px] w-[550px] rounded-full bg-neutral-400/10 blur-[140px] dark:bg-neutral-600/10" />
+        <div className="absolute top-1/4 -right-40 h-125 w-125 rounded-full bg-emerald-500/10 blur-[130px] dark:bg-emerald-500/[0.07]" />
+        <div className="absolute top-2/3 -left-32 h-112.5 w-112.5 rounded-full bg-teal-500/10 blur-[120px] dark:bg-teal-500/6" />
+        <div className="absolute right-1/4 -bottom-40 h-137.5 w-137.5 rounded-full bg-neutral-400/10 blur-[140px] dark:bg-neutral-600/10" />
         <div className="bg-ambient-pattern absolute inset-0 opacity-40 dark:opacity-20" />
       </div>
 
